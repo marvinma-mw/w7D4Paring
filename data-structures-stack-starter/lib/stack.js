@@ -71,6 +71,11 @@ class Stack {
     // this.top = this.top.next;
     return oldTop.value;
   }
+
+  size(){
+    return this.length;
+  }
+
 }
 
 let stack1 = new Stack();
