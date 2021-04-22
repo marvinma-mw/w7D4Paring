@@ -21,46 +21,52 @@
 // Let's Code!
 // -----------
 
-
 ///FIFO
 
 class Node {
-    constructor(value) {
-        this.value=value;
-        this.next=null;
-    }
-
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
 class Queue {
-    constructor(){
-        this.front=null;
-        this.back=null;
-        this.length=0;
+  constructor() {
+    this.front = null;
+    this.back = null;
+    this.length = 0;
+  }
+
+  enqueue(value) {
+    let newNode = new Node(value);
+    if (!this.length) {
+      this.front = newNode;
+      this.back = this.front;
+    } else {
+      this.back.next = newNode;
+      this.back = newNode;
     }
+    return ++this.length;
+  }
 
-    enqueue(value){
-        let newNode=new Node(value);
-        if(!this.length){
-            this.front=newNode;
-        }else{
-            newNode.next=this.front;
-            this.front=this.back;
-            this.back=newNode.next;
-        }
-        return ++this.length;
-    };
+  dequeue() {
+    if (!this.length) return null;
+    let oldEnd = this.front;
+    // if (this.length === 1) {
+    //     let oldEnd = this.front.next
+    //     oldEnd = this.back.next
+    // }
+    this.front = this.front.next;
+    if (this.front === null) {
+      this.back = null;
+    }
+    this.length--;
+    return oldEnd.value;
+  }
 
-
-    dequeue(){
-
-    };
-
-
-    size(){
-
-    };
-
+  size() {
+    return this.length;
+  }
 }
 
 exports.Node = Node;
