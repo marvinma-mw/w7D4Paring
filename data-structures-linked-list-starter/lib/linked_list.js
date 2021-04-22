@@ -12,7 +12,7 @@
 // Constraints:
 // ------------
 //
-// Make sure the time and space complexity of each is equivalent to those
+// Make sure the time and space complexity of each is equivalueent to those
 // in the table provided in the Time and Space Complexity Analysis section
 // of your Linked List reading!
 //
@@ -22,8 +22,9 @@
 
 // TODO: Implement a Linked List Node class here
 class Node {
-    constructor(val) {
-
+    constructor(value) {
+        this.value = value;
+        this.next = null;
     }
 
 }
@@ -31,12 +32,33 @@ class Node {
 // TODO: Implement a Singly Linked List class here
 class LinkedList {
     constructor() {
-
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
     }
 
     // TODO: Implement the addToTail method here
-    addToTail(val) {
+    addToTail(value) {
+        // let newNode = new Node(value);
+        // let prevTail = this.tail;
+        // prevTail.next = newNode;
+        // this.tail = newNode;
+        // if(!this.length){
+        //     return null;
+        // }
+        // }else{
+        //     this.tail = newNode.next;
+        // }
+        let newNode = new Node(value);
+        let currVal;
+     //   console.log(newNode.value);
+        this.head=newNode;
+        this.tail = newNode;
+            currVal=this.head;
+        this.length++;
+        return ;
 
+        // this.tail=this.tail.next;
     }
 
     // TODO: Implement the removeTail method here
@@ -45,7 +67,7 @@ class LinkedList {
     }
 
     // TODO: Implement the addToHead method here
-    addToHead(val) {
+    addToHead(value) {
 
     }
 
@@ -65,12 +87,12 @@ class LinkedList {
     }
 
     // TODO: Implement the set method here
-    set(index, val) {
+    set(index, value) {
 
     }
 
     // TODO: Implement the insert method here
-    insert(index, val) {
+    insert(index, value) {
 
     }
 
@@ -81,7 +103,7 @@ class LinkedList {
 
     // TODO: Implement the size method here
     size() {
-
+        return this.length;
     }
 }
 
