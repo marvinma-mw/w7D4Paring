@@ -32,7 +32,6 @@ class Stack {
   constructor() {
     this.top = null;
     this.length = 0;
-    this.last = null;
   }
 
   push(value) {
@@ -40,25 +39,36 @@ class Stack {
     if (!this.length) {
       this.top = newNode;
     } else {
-      this.last = this.top;
+    newNode.next = this.top;
       this.top = newNode;
     }
     return ++this.length;
   }
 
   pop() {
-    if (!this.length) {
+    /*
+    3) Should reassign the top pointer to the node just below the top node for stacks of size two or greater
+    4) Should decrement the stack's length by one each time a node is removed from the stack
+    5) Should return the value of the node removed from the stack
+        const oldHead = this.head;
+        const newHead = oldHead.next;
+        this.head = newHead;
+      */
+    if (this.length === 0) {
       return null;
     }
-
     const oldTop = this.top;
-
-    if (this.top === this.last) {
-      this.last = null;
-    }
-
     this.top = this.top.next;
-    --this.length;
+
+    // if (this.top === this.last) {
+    //   this.last = null;
+    // //   this.length--;
+    // }
+    // if (this.length > 2) {
+    //   const oldTop = this.top;
+    this.length--;
+    // }
+    // this.top = this.top.next;
     return oldTop.value;
   }
 }
@@ -68,7 +78,6 @@ console.log(stack1.push(1));
 console.log(stack1.push(2));
 console.log(stack1.push(3));
 console.log(stack1.pop());
-
 
 exports.Node = Node;
 exports.Stack = Stack;
